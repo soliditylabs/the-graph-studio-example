@@ -1,0 +1,23 @@
+specVersion: 0.0.4
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum/contract
+    name: Game
+    network: rinkeby
+    source:
+      address: "0xf82bf8c900d1c6709b594b83d12398fec21c1214"
+      abi: Game
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - BetPlaced
+      abis:
+        - name: Game
+          file: ./abis/Game.json
+      eventHandlers:
+        - event: BetPlaced(address,uint256,bool)
+          handler: handleBetPlaced
+      file: ./src/mapping.ts

@@ -1,0 +1,14 @@
+type Bet @entity {
+  id: ID!
+  player: Player!
+  playerHasWon: Boolean!
+  time: Int!
+}
+
+type Player @entity {
+  id: ID!
+  totalPlayedCount: Int
+  hasWonCount: Int
+  hasLostCount: Int
+  bets: [Bet!]!
+}
